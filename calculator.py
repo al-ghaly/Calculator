@@ -1,16 +1,16 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-calculator = tk.Tk()
-operator = None
-calculator.title(' ' * 40 + 'Calculator')
-frame = tk.Frame(calculator, bd=4, highlightthickness=10, highlightbackground='dark slate gray')
+calculator = tk.Tk()  # the application
+calculator.title(' ' * 40 + 'Calculator')  # make the title at the center
+frame = tk.Frame(calculator, bd=4, highlightthickness=10, highlightbackground='dark slate gray')  # the calculatoe frame
 frame.pack()
-input_text = tk.StringVar()
-entry = tk.Entry(frame, font=('Arial', 20, 'bold'), textvariable=input_text,
+input_text = tk.StringVar()  # the user input value
+entry = tk.Entry(frame, font=('Arial', 20, 'bold'), textvariable=input_text,  # the user input widget
                  bg='powder blue', justify='right', bd=30, insertwidth=4)
 entry.grid(columnspan=4, ipady=15)
-entry.focus_set()
-tk.Button(frame, text='1', font=('Arial', 20, 'bold'), bg='powder blue', bd=8, padx=16, pady=16, fg='black'
+entry.focus_set()  # set the focus to the entry widget
+# the calculator buttons 
+tk.Button(frame, text='1', font=('Arial', 20, 'bold'), bg='powder blue', bd=8, padx=16, pady=16, fg='black' 
           , command=lambda: input_text.set(input_text.get()+'1')).grid(row=1, column=0)
 tk.Button(frame, text='2', font=('Arial', 20, 'bold'), bg='powder blue', bd=8, padx=16, pady=16, fg='black'
           , command=lambda: input_text.set(input_text.get()+'2')).grid(row=1, column=1)
@@ -41,7 +41,7 @@ tk.Button(frame, text='*', font=('Arial', 20, 'bold'), bg='powder blue', bd=8, p
 tk.Button(frame, text='/', font=('Arial', 20, 'bold'), bg='powder blue', bd=8, padx=16, pady=16, fg='black'
           , command=lambda: input_text.set(input_text.get()+'/')).grid(row=4, column=3)
 
-
+# the actual calculating
 def evaluate(event=None):
     try:
         input_text.set(str(eval(input_text.get())))
